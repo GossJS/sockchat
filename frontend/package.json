@@ -1,7 +1,6 @@
 {
-  "name": "chat-frontend",
+  "name": "sockchat-frontend",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "moment": "^2.24.0",
     "react": "^16.8.6",
@@ -10,6 +9,7 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
+    "begin": "../node_modules/.bin/nodemon --exec yarn build --watch src",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
