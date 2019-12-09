@@ -1,9 +1,11 @@
 {
-  "name": "new",
+  "name": "sockchat",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node backend"
+    "start": "nodemon backend/index.js --watch backend/index.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.1"
   }
 }
