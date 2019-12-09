@@ -21,7 +21,6 @@ const Message = conn.model('Message', MessageSchema);
 let s;
 const PORT = 1234;
 const { log } = console;
-const hu = { 'Content-Type': 'text/html; charset=utf-8' };
 const app = x();
 app
   .use(x.static('./frontend/build/'))
@@ -30,9 +29,7 @@ app
   // то надо было бы брать путь '../frontend/build
 
   .use(({ res: r }) => r.status(404).end('Пока нет!'))
-  .use((e, r, rs, n) => rs.status(500).end(`Ошибка: ${e}`))
-  /* .set('view engine', 'pug') */
-  .set('x-powered-by', false);
+  .use((e, r, rs, n) => rs.status(500).end(`Ошибка: ${e}`));
 module.exports = s = h1(app)
   .listen(process.env.PORT || PORT, () => log(process.pid));
 
@@ -43,7 +40,6 @@ const cb = (d) => log(d);
 ws.on('connection', (wsock) => {
   log('Новый пользователь!');
   wsock.emit('serv', 'Добро пожаловать!', cb);
-  wsock.on('msg', (msg) => wsock.broadcast.emit('serv', `Реплика: ${msg}`));
   wsock.on('disconnect', () => log('Пользователь отвалился!'));
 });
 
